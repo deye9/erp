@@ -1,3 +1,8 @@
 language: php
 php:
   - 7.1.9
+notifications:
+  slack:
+    rooms:
+	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#deployments
+	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#erp
