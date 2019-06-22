@@ -1,5 +1,8 @@
 language: php
-services: docker
+php:
+  - 7.1.9
+services:
+  - docker
 before_install:
   # Strips out dashes in organization names because they are not allowed in dockerhub
   - export DOCKER_REPO=`awk -F/ '{gsub("-","",$1)};{print $1"/"$2}' <<<$TRAVIS_REPO_SLUG | tr '[:upper:]' '[:lower:]'`
@@ -11,7 +14,7 @@ before_install:
   - sudo /etc/init.d/postgresql stop
   # set env vars in the build settings to interact with repositories
   # see https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -u="$adegbenga.adeye@outlook.com" -p="$SWATCH@1602"
   - docker-compose -v
 install:
   # Install dev php dependencies
@@ -31,8 +34,6 @@ script:
   - docker-compose exec fpm sh -c "vendor/bin/phpcs --standard=PSR2 --ignore=app/Http/routes.php app"
   # Seed database
   - docker-compose exec fpm sh -c "php artisan migrate --seed"
-  # Ensure the api documentation is still accurate
-  - docker-compose run dredd dredd /var/www/html/resources/docs/api-documentation.apib http://web/api/v1
   # Run tests
   - docker-compose exec fpm sh -c "vendor/bin/phpunit"
   # Build cli container
@@ -50,4 +51,5 @@ notifications:
     rooms:
 	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#deployments
 	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#erp
+
 
