@@ -11,11 +11,12 @@ jobs:
     working_directory: ~/erp
     steps:
       - checkout
-      - run: sudo apt install -y php7.1-pgsql
-      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo apt update
       - run: sudo docker-php-ext-install zip
 
       # Download and cache dependencies
+
+      # composer cache
       - restore_cache:
           keys:
             # "composer.lock" can be used if it is committed to the repo
@@ -29,21 +30,22 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
+
+      # node cache
       - restore_cache:
           keys:
-            - node-v1-{{ checksum "package.json" }}
-            - node-v1-
-      - run: yarn install
+            - node-v4-{{ checksum "package.json" }}
+            - node-v4-
+      - run: npm install
       - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
+          key: node-v4-{{ checksum "package.json" }}
           paths:
             - node_modules
 
       # prepare the database
-      - run: touch storage/testing.sqlite
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: php artisan migrate --env=testing --force
 
       # run tests with phpunit or codecept
-      #- run: ./vendor/bin/phpunit
-      - run: ./vendor/bin/codecept build
-      - run: ./vendor/bin/codecept run
+      - run: ./vendor/bin/phpunit
+      # - run: ./vendor/bin/codecept build
+      # - run: ./vendor/bin/codecept run
