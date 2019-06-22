@@ -4,7 +4,11 @@ php:
 services:
   - docker
 before_install:
+  # Upgrade docker/docker-compose
+  - docker -v
+  - cp .env.example .env
   # Build and create our containers
+  - docker login -u="$adegbenga.adeye@outlook.com" -p="$SWATCH@1602"
   - docker-compose up -d
   - docker ps -a
 notifications:
