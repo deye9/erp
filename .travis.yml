@@ -1,0 +1,14 @@
+language: php
+php:
+  - 7.1.9
+services:
+  - docker
+before_install:
+  # Build and create our containers
+  - docker-compose up -d
+  - docker ps -a
+notifications:
+  slack:
+    rooms:
+	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#deployments
+	  - erpfreeproject:4s5EzjbwL75fpAF1HV9kNvYh#erp
