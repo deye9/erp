@@ -7,10 +7,10 @@ before_install:
   # Upgrade docker/docker-compose
   - docker -v
   - cp .env.example .env
-  # Build and create our containers
-  - docker login -u="$adegbenga.adeye@outlook.com" -p="$SWATCH@1602"
+  # Build our containers
   - docker-compose up -d
   - docker ps -a
+install: composer install
 notifications:
   slack:
     rooms:
