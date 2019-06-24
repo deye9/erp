@@ -6,11 +6,13 @@ services:
 before_install:
   # Upgrade docker/docker-compose
   - docker -v
-  - cp .env.example .env
+  # - cp .env.example .env
   # Build our containers
   - docker-compose up -d
   - docker ps -a
 install: composer install
+script:
+  - vendor/bin/phpunit
 notifications:
   slack:
     rooms:
