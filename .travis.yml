@@ -10,7 +10,9 @@ before_install:
   # Build our containers
   - docker-compose up -d
   - docker ps -a
-install: composer install
+install:
+  - composer install
+  - composer require --dev phpunit/phpunit ^7
 script:
   - vendor/bin/phpunit
 notifications:
