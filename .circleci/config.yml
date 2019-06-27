@@ -26,16 +26,15 @@ jobs:
             php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
-      # - run:
-      #     name: Install Project Dependencies
-      #     command: php composer.phar
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.testing .env
       # - run:
+      #     name: Install Project Dependencies
+      #     command: php composer.phar
+      # - run:
       #     name: PHP files used in CLI mode
       #     command: php --ini
-      - run: php composer.phar update --optimize-autoloader --no-dev
       - run:
           name: Migrate Laravel Database
           command: sudo php artisan migrate:fresh --seed --env=testing
