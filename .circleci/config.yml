@@ -36,10 +36,8 @@ jobs:
       #     name: PHP files used in CLI mode
       #     command: php --ini
       # - run:
-      #     name: Initialize Database
-      #     command: |
-      #       php artisan migrate:refresh
-      #       php artisan db:seed
+          name: Migrate Laravel Database
+          command: php artisan migrate:fresh --seed --env=testing
       # - run:
       #     name: Run Docker
       #     command: docker-compose up -d
