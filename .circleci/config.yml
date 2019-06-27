@@ -25,9 +25,10 @@ jobs:
             php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
-      - run:
-          name: Install Project Dependencies
-          command: php composer.phar install --ignore-platform-reqs ext-pcntl ext-posix
+        - run: composer install -n --prefer-dist --ignore-platform-reqs
+      # - run:
+      #     name: Install Project Dependencies
+      #     command: php composer.phar install --ignore-platform-reqs
       - run:
           name: Initialize Database
           command: |
