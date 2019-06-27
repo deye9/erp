@@ -32,6 +32,9 @@ jobs:
       - run:
           name: Verify Composer Installation
           command: php composer.phar --version
+      - run:
+          name: Install packages via composer
+          command: php composer.phar install
       # - run:
       #     name: Initialize Database
       #     command: |
@@ -40,9 +43,9 @@ jobs:
       # - run:
       #     name: Run Docker
       #     command: docker-compose up -d
-      - run:
-          name: Run Tests
-          command: php composer.phar vendor/bin/phpunit
+      # - run:
+      #     name: Run Tests
+      #     command: php composer.phar vendor/bin/phpunit
 workflows:
   version: 2
   workflow:
