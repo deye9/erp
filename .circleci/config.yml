@@ -1,38 +1,44 @@
 version: 2
 jobs:
   build:
+    working_directory: /var/www/html
     docker:
-      - image: php:7.0-apache
+      - image: circleci/php:7.0-apache
       - image: circleci/9.6.9-alpine
         environment:
           - POSTGRES_DB: erp
           - POSTGRES_USER: docker_erp_user
           - POSTGRES_PASSWORD: docker_erp_password
-    working_directory: /var/www/html
     steps:
-      - run:
-        name: Install System Packages
-        command: apt-get update && apt-get -y install git unzip zlib1g-dev
       - checkout
       - run:
-        name: Install PHP Extensions
-        command: docker-php-ext-install pdo pdo_pgsql zip
+          name: Install System Packages
+          command: apt-get update && apt-get -y install git unzip zlib1g-dev
       - run:
-        name: Install Composer
-        command: |
-          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-          php -r "copy('https://composer.github.io/installer.sig', 'composer-setup.sig');"
-          php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-          php composer-setup.php
-          php -r "unlink('composer-setup.php');"
+          name: Install PHP Extensions
+          command: docker-php-ext-install pdo pdo_pgsql zip
       - run:
-        name: Install Project Dependencies
-        command: php composer.phar install
+          name: Install Composer
+          command: |
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            php -r "copy('https://composer.github.io/installer.sig', 'composer-setup.sig');"
+            php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
       - run:
-        name: Initialize Database
-        command: |
-          php artisan migrate:refresh
-          php artisan db:seed
+          name: Install Project Dependencies
+          command: php composer.phar install
       - run:
-        name: Run Tests
-        command: vendor/bin/phpunit
+          name: Initialize Database
+          command: |
+            php artisan migrate:refresh
+            php artisan db:seed
+      - run:
+          name: Run Tests
+          command: vendor/bin/phpunit
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
