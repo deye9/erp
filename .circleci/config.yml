@@ -27,9 +27,9 @@ jobs:
             php composer-setup.php
             php /var/www/html/composer
             php -r "unlink('composer-setup.php');"
-      # - run:
-      #     name: Install Project Dependencies
-      #     command: php composer.phar install #--ignore-platform-reqs
+      - run:
+          name: Install Project Dependencies
+          command: php composer.phar install #--ignore-platform-reqs
       # - run:
       #     name: Initialize Database
       #     command: |
