@@ -37,7 +37,7 @@ jobs:
       #     command: php --ini
       - run:
           name: Migrate Laravel Database
-          command: php artisan migrate:fresh --seed --env=testing
+          command: php composer.phar artisan migrate:fresh --seed --env=testing
       # - run:
       #     name: Run Docker
       #     command: docker-compose up -d
