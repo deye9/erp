@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /var/www/html #application
+    working_directory: /var/www/html
     docker:
       - image: php:7.1.27-apache
       - image: postgres:latest
@@ -29,15 +29,15 @@ jobs:
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.testing .env
-      # - run:
-      #     name: Install Project Dependencies
-      #     command: php composer.phar
+      - run:
+          name: Install Project Dependencies
+          command: php composer.phar global require "laravel/lumen-installer"
       # - run:
       #     name: PHP files used in CLI mode
       #     command: php --ini
       - run:
           name: Migrate Laravel Database
-          command: sudo php artisan migrate:fresh --seed --env=testing
+          command: php artisan migrate:fresh --seed --env=testing
       # - run:
       #     name: Run Docker
       #     command: docker-compose up -d
