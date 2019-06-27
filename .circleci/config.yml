@@ -34,7 +34,10 @@ jobs:
           command: php composer.phar --version
       - run:
           name: Install packages via composer
-          command: php composer.phar --prefer-dist --dev
+          command: php composer.phar update --prefer-dist --dev
+      - run:
+          name: PHP files used in CLI mode
+          command: php --ini
       # - run:
       #     name: Initialize Database
       #     command: |
