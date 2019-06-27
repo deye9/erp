@@ -29,9 +29,9 @@ jobs:
       # - run:
       #     name: Install Project Dependencies
       #     command: php composer.phar
-       - run:
-         name: Setup Laravel testing environment variables for CircleCI test
-         command: cp .env.testing .env
+      - run:
+          name: Setup Laravel testing environment variables for CircleCI test
+          command: cp .env.testing .env
       - run:
           name: Install Composer
           command: composer self-update
