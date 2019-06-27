@@ -28,10 +28,10 @@ jobs:
             php -r "unlink('composer-setup.php');"
       - run:
           name: Install Project Dependencies
-          command: php composer.phar #install #--ignore-platform-reqs # php /var/www/html/composer
+          command: php composer.phar
       - run:
           name: Verify Composer Installation
-          command: composer --version
+          command: php composer.phar --version
       # - run:
       #     name: Initialize Database
       #     command: |
@@ -42,7 +42,7 @@ jobs:
       #     command: docker-compose up -d
       - run:
           name: Run Tests
-          command: vendor/bin/phpunit
+          command: php composer.phar vendor/bin/phpunit
 workflows:
   version: 2
   workflow:
