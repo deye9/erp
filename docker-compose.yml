@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  #App service
+  #App service PHP 7.1.27
   app:
     build: docker/php
     depends_on:
