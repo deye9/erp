@@ -4,7 +4,7 @@ jobs:
     working_directory: /var/www/html
     docker:
       - image: circleci/php:7.0-apache
-      - image: circleci/9.6.9-alpine
+      - image: circleci/latest
         environment:
           - POSTGRES_DB: erp
           - POSTGRES_USER: docker_erp_user
