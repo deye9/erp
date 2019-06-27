@@ -8,7 +8,7 @@ jobs:
           - POSTGRES_DB: erp
           - POSTGRES_USER: docker_erp_user
           - POSTGRES_PASSWORD: docker_erp_password
-    parallelism: 2
+    parallelism: 4
     working_directory: /var/www/html #application
     steps:
       - run:
@@ -34,9 +34,9 @@ jobs:
       #     command: |
       #       php artisan migrate:refresh
       #       php artisan db:seed
-      - run:
-          name: Run Docker
-          command: docker-compose up -d
+      # - run:
+      #     name: Run Docker
+      #     command: docker-compose up -d
       - run:
           name: Run Tests
           command: vendor/bin/phpunit
