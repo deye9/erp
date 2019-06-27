@@ -8,7 +8,8 @@ jobs:
           - POSTGRES_DB: erp
           - POSTGRES_USER: docker_erp_user
           - POSTGRES_PASSWORD: docker_erp_password
-    working_directory: /var/www/html
+    parallelism: 2
+    working_directory: /application
     steps:
       - run:
           name: Install System Packages
@@ -17,8 +18,9 @@ jobs:
       - run:
           name: Install PHP Extensions
           command: docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-php-ext-install pdo pdo_pgsql zip
-      # - run:
-      #     name: Install Composer
+      - run:
+          name: Install Composer
+          command: composer install
       #     command: |
       #       php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       #       php -r "copy('https://composer.github.io/installer.sig', 'composer-setup.sig');"
