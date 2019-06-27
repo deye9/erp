@@ -34,7 +34,7 @@ jobs:
           command: php composer.phar --version
       - run:
           name: Install packages via composer
-          command: php composer.phar install
+          command: php composer.phar update --dev
       # - run:
       #     name: Initialize Database
       #     command: |
