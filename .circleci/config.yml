@@ -35,7 +35,7 @@ jobs:
       # - run:
       #     name: PHP files used in CLI mode
       #     command: php --ini
-      # - run:
+      - run:
           name: Migrate Laravel Database
           command: php artisan migrate:fresh --seed --env=testing
       # - run:
