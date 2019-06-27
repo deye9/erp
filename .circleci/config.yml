@@ -29,9 +29,9 @@ jobs:
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.testing .env
-      # - run:
-      #     name: Install Lumen
-      #     command: php composer.phar global require "laravel/lumen-installer"
+      - run:
+          name: Install Lumen
+          command: php composer.phar global require "laravel/lumen-installer"
       - run:
           name: PHP list lumen commands
           command: php /root/.composer/vendor/bin/lumen list
@@ -44,9 +44,9 @@ jobs:
       # - run:
       #     name: Run Docker
       #     command: docker-compose up -d
-      # - run:
-      #     name: Run Tests
-      #     command: ./vendor/bin/phpunit
+      - run:
+          name: Run Tests
+          command: /root/.composer/vendor/bin/phpunit
 workflows:
   version: 2
   workflow:
