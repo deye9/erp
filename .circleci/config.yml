@@ -32,9 +32,9 @@ jobs:
       - run:
           name: Install Project Dependencies
           command: php composer.phar global require "laravel/lumen-installer"
-      # - run:
-      #     name: PHP files used in CLI mode
-      #     command: php --ini
+      - run:
+          name: PHP files used in CLI mode
+          command: php lumen list #--ini
       - run:
           name: Migrate Laravel Database
           command: php artisan migrate:fresh --seed --env=testing
