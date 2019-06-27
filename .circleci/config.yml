@@ -46,7 +46,7 @@ jobs:
       #     command: docker-compose up -d
       - run:
           name: Run Tests
-          command: /root/.composer/vendor/bin/phpunit
+          command: php /root/.composer/vendor/bin/phpunit
 workflows:
   version: 2
   workflow:
