@@ -34,7 +34,7 @@ jobs:
           command: php composer.phar global require "laravel/lumen-installer"
       - run:
           name: PHP list lumen commands
-          command: php /Users/andelatsm/.composer/vendor/bin/lumen list
+          command: php /root/.composer/vendor/bin/lumen list
       - run:
           name: Migrate Laravel Database
           command: php /var/www/html/artisan migrate:fresh --seed --env=testing
