@@ -33,7 +33,7 @@ jobs:
       #     command: cp .env.testing .env
       - run:
           name: Install project dependencies
-          command: php composer.phar install
+          command: php composer.phar require --dev phpunit/php-invoker
       # - run:
       #     name: Make Artisan executable
       #     command: chmod +x artisan && ls && pwd
