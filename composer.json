@@ -16,11 +16,11 @@
         "vlucas/phpdotenv": "^3.3"
     },
     "require-dev": {
-        "phpunit/php-invoker": "^2.0",
+        "appzcoder/lumen-routes-list": "^1.0",
         "fzaninotto/faker": "^1.4",
-        "phpunit/phpunit": "^7.0",
         "mockery/mockery": "^1.0",
-        "appzcoder/lumen-routes-list": "^1.0"
+        "phpunit/php-invoker": "^2.0",
+        "phpunit/phpunit": "^7.0"
     },
     "autoload": {
         "classmap": [
