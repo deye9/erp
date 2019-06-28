@@ -2,10 +2,10 @@ version: 2
 jobs:
   build:
     working_directory: /var/www/html
-    environment:
-      - BASH_ENV: ~/.bashrc
     docker:
       - image: php:7.1.27-apache
+        environment:
+          APP_ENV: test
       - image: postgres:latest
         environment:
           - POSTGRES_DB: erp
@@ -31,6 +31,14 @@ jobs:
       - run:
           name: Setup Laravel testing environment variables for CircleCI test
           command: cp .env.testing .env
+      - run:
+          name: Display PHP information
+          command: |
+            php -v
+            php composer.phar --version
+      - run:
+          name: Install project dependencies
+          command: php composer.phar install
       - run:
           name: Install Lumen
           command: php composer.phar global require "laravel/lumen-installer"
