@@ -28,17 +28,15 @@ jobs:
             php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
+      # - run:
+      #     name: Setup Laravel testing environment variables for CircleCI test
+      #     command: cp .env.testing .env
       - run:
-          name: Setup Laravel testing environment variables for CircleCI test
-          command: cp .env.testing .env
-      - run:
-          name: Display PHP information
+          name: Display PHP information and Install project dependencies
           command: |
             php -v
             php composer.phar --version
-      - run:
-          name: Install project dependencies
-          command: php composer.phar install
+            php composer.phar install
       - run:
           name: Install Lumen
           command: php composer.phar global require "laravel/lumen-installer"
