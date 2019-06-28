@@ -1,7 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: /var/www/html
+    working_directory: /var/www
+    environment:
+      - BASH_ENV: ~/.bashrc
     docker:
       - image: php:7.1.27-apache
       - image: postgres:latest
