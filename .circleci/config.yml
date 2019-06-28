@@ -35,11 +35,11 @@ jobs:
           name: Install Lumen
           command: php composer.phar global require "laravel/lumen-installer"
       - run:
-          name: PHP list lumen commands
-          command: ls #php /root/.composer/vendor/bin/lumen list
+          name: Make Artisan executable
+          command: chmod +x artisan && ls && pwd #php /root/.composer/vendor/bin/lumen list
       - run:
           name: Execute the artisan command
-          command: php /root/.composer/vendor/bin/artisan
+          command: php /var/www/html/artisan
       # - run:
       #     name: Migrate Laravel Database
       #     command: php /var/www/html/artisan migrate:fresh --seed --env=testing
