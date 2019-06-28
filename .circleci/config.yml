@@ -38,8 +38,11 @@ jobs:
           name: Make Artisan executable
           command: chmod +x artisan && ls && pwd #php /root/.composer/vendor/bin/lumen list
       - run:
-          name: Execute the artisan command
-          command: php artisan
+          name: Fire up Docker
+          command: docker-compose up -d
+      # - run:
+      #     name: Execute the artisan command
+      #     command: php artisan key:generate
       # - run:
       #     name: Migrate Laravel Database
       #     command: php /var/www/html/artisan migrate:fresh --seed --env=testing
