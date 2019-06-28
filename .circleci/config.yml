@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /var/www
+    working_directory: /var/www/html
     environment:
       - BASH_ENV: ~/.bashrc
     docker:
