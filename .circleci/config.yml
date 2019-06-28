@@ -1,34 +1,23 @@
 version: 2
 jobs:
   build:
+    working_directory: /var/www/html
     docker:
-      - image: php:7.0-apache
-        environment:
-          APP_ENV: local
-          APP_DEBUG: true
-          APP_KEY: kjcndjjksddwdwdw
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_DATABASE: testdb
-          DB_USERNAME: root
-          DB_PASSWORD: password
-          CACHE_DRIVER: memcached
-          QUEUE_DRIVER: sync
+      - image: php:7.1.27-apache
       - image: postgres:latest
         environment:
           - POSTGRES_DB: erp
-          - POSTGRES_USER=docker_erp_user
-          - POSTGRES_PASSWORD=docker_erp_password
-    working_directory: /var/www/html
+          - POSTGRES_USER: docker_erp_user
+          - POSTGRES_PASSWORD: docker_erp_password
+    parallelism: 4
     steps:
-      - run:
-          name: Install System Packages
-          command: apt-get update && apt-get -y install git unzip zlib1g-dev
       - checkout
       - run:
+          name: Install System Packages
+          command: apt-get update && apt-get install -y git unzip zlib1g-dev libpq-dev
+      - run:
           name: Install PHP Extensions
-          command: docker-php-ext-install pdo php7.1-pgsql zip
+          command: docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql && docker-php-ext-install pdo pdo_pgsql zip
       - run:
           name: Install Composer
           command: |
@@ -38,13 +27,28 @@ jobs:
             php composer-setup.php
             php -r "unlink('composer-setup.php');"
       - run:
-          name: Install Project Dependencies
-          command: php composer.phar install
+          name: Setup Laravel testing environment variables for CircleCI test
+          command: cp .env.testing .env
       - run:
-          name: Initialize Database
-          command: |
-            php artisan migrate:refresh
-            php artisan db:seed
+          name: Install Lumen
+          command: php composer.phar global require "laravel/lumen-installer"
+      - run:
+          name: PHP list lumen commands
+          command: php /root/.composer/vendor/bin/lumen list
+      # - run:
+      #     name: Execute the artisan command
+      #     command: php /root/.composer/vendor/bin/artisan
+      # - run:
+      #     name: Migrate Laravel Database
+      #     command: php /var/www/html/artisan migrate:fresh --seed --env=testing
+      # - run:
+      #     name: Run Docker
+      #     command: docker-compose up -d
       - run:
           name: Run Tests
-          command: vendor/bin/phpunit
+          command: php phpunit #vendor/bin/phpunit
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build

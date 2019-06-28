@@ -10,4 +10,3 @@ Homestead.yaml
 *.txt
 frontend_old
 .DS_Store
-.travis.yml
