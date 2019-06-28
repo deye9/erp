@@ -37,7 +37,7 @@ jobs:
           command: php /root/.composer/vendor/bin/lumen list
       - run:
           name: Execute the artisan command
-          command: php artisan
+          command: php /root/.composer/vendor/bin/artisan
       # - run:
       #     name: Migrate Laravel Database
       #     command: php /var/www/html/artisan migrate:fresh --seed --env=testing
