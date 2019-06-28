@@ -31,23 +31,17 @@ jobs:
       # - run:
       #     name: Setup Laravel testing environment variables for CircleCI test
       #     command: cp .env.testing .env
-      # - run:
-      #     name: Display PHP information and Install project dependencies
-      #     command: |
-      #       php -v
-      #       php composer.phar --version
-      #       php composer.phar install
       - run:
           name: Install project dependencies
           command: |
             php composer.phar global require "laravel/lumen-installer"
-            php composer.phar require --dev phpunit/php-invoker --ignore-platform-reqs
+            php composer.phar require --dev phpunit/php-invoker
       - run:
           name: Make Artisan executable
           command: chmod +x artisan && ls && pwd #php /root/.composer/vendor/bin/lumen list
       - run:
           name: Execute the artisan command
-          command: php artisan list
+          command: php artisan migrate:fresh --seed --env=testing
       # - run:
       #     name: Migrate Laravel Database
       #     command: php /var/www/html/artisan migrate:fresh --seed --env=testing
@@ -56,7 +50,7 @@ jobs:
       #     command: docker-compose up -d
       - run:
           name: Run Tests
-          command: php phpunit #vendor/bin/phpunit
+          command: vendor/bin/phpunit
 workflows:
   version: 2
   workflow:
