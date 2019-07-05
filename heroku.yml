@@ -1,0 +1,11 @@
+build:
+  docker:
+    db: docker/postgres
+release:
+  image: db
+
+
+
+#   heroku container:release erp_db
+# heroku container:release erp_app
+# heroku container:release webserver
