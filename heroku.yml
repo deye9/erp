@@ -1,6 +1,6 @@
 build:
   docker:
-    db: docker/postgres
+    db: docker/postgres/Dockerfile
 release:
   image: db
 
