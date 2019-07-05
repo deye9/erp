@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77394180a5dd29c14b22f786089b1ac1",
+    "content-hash": "909f531cf7254c325847aa8df25989e8",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -5241,7 +5241,7 @@
             "package": "tymon/jwt-auth"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "tymon/jwt-auth": 20,
         "heroku/heroku-buildpack-php": 20
