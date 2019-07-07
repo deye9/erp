@@ -3,6 +3,7 @@ build:
     db: docker/postgres/Dockerfile
 release:
   image: db
+  command: composer install
 # #   heroku container:release erp_db
 # # heroku container:release erp_app
 # # heroku container:release webserver

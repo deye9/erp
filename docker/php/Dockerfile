@@ -13,5 +13,3 @@ RUN apt-get update \
 # Install git and clear cache
 RUN apt-get update \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-
-CMD ["sh", "-c", "composer install"]
