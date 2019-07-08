@@ -10,3 +10,5 @@ Homestead.yaml
 *.txt
 frontend_old
 .DS_Store
+settings.json
+*.pem

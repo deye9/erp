@@ -18,8 +18,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 
 $app = new Laravel\Lumen\Application(
-    // dirname(__DIR__)
-    realpath(__DIR__ . '/../')
+    dirname(__DIR__)
+    // realpath(__DIR__ . '/../')
 );
 
 $app->instance('path.config', app()->basePath() . DIRECTORY_SEPARATOR . 'config');
