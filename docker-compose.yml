@@ -50,7 +50,7 @@ services:
     networks:
       - app-network
 
-  # #CertBot
+  #CertBot
   certbot:
     image: certbot/certbot
     container_name: certbot
