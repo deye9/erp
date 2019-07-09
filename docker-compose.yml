@@ -21,7 +21,6 @@ services:
       - app
     restart: unless-stopped
     tty: true
-    # command: mkdir certs
     volumes:
       - .:/application
       - ./docker/nginx/example.com+5.pem:/etc/nginx/example.com+5.pem
