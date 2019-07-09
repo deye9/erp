@@ -8,7 +8,14 @@ Homestead.json
 Homestead.yaml
 .env
 *.txt
-frontend_old
-.DS_Store
 settings.json
-*.pem
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
