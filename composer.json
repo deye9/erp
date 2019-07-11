@@ -9,14 +9,11 @@
         "illuminate/hashing": "^5.8",
         "laravel/lumen-framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "laravelista/lumen-vendor-publish": "^2.1",
         "owen-it/laravel-auditing": "^9.2",
-        "pusher/pusher-php-server": "^3.4",
         "tymon/jwt-auth": "dev-develop#f72b8eb as 1.0.0-rc.3.2",
         "vlucas/phpdotenv": "^3.3"
     },
     "require-dev": {
-        "heroku/heroku-buildpack-php": "dev-master",
         "appzcoder/lumen-routes-list": "^1.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",

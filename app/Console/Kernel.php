@@ -16,7 +16,6 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\DeleteTenant::class,
         \App\Console\Commands\CreateTenant::class,
         \App\Console\Commands\DatabaseCreateCommand::class,
-        \Laravelista\LumenVendorPublish\VendorPublishCommand::class,
     ];
 
     /**
