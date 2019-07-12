@@ -35,7 +35,7 @@ jobs:
       - run:
           name: deploy to GCP
           command: |
-            if ["$CIRCLE_BRANCH" == 'master' ]; then
+            if [ "$CIRCLE_BRANCH" == 'master' ]; then
               ssh -i $SSH_PRIVATE_KEY $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && sudo docker-compose down && sudo docker-compose up'
             fi
 
