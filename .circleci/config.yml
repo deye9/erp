@@ -44,7 +44,7 @@ jobs:
                 sudo docker-compose down
                 echo "spinning up new deployment"
                 sudo docker-compose up
-              EOF
+                EOF
             fi
 
       # - run:
