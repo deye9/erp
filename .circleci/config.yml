@@ -35,8 +35,16 @@ jobs:
       - run:
           name: deploy to GCP
           command: |
+            echo $SSH_PRIVATE_KEY >> ssh_key
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -i $SSH_PRIVATE_KEY $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && sudo docker-compose down && sudo docker-compose up'
+              ssh -i ssh_key $USER@$IPADDRESS <<EOF
+                echo "pulling from github"
+                git pull https://github.com/deye9/erp.git
+                echo "pulling down current deployment"
+                sudo docker-compose down
+                echo "spinning up new deployment"
+                sudo docker-compose up
+              EOF
             fi
 
       # - run:
