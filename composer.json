@@ -45,9 +45,6 @@
             "composer dump-autoload",
             "php artisan cache:clear"
         ],
-        "pre-update-cmd": [
-            "php artisan clear-compiled"
-        ],
         "post-update-cmd": [
             "php artisan optimize"
         ]
