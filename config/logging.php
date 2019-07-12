@@ -76,6 +76,13 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        // Add the following lines to integrate with Stackdriver:
+        'stackdriver' => [
+            'driver' => 'custom',
+            'via' => App\Logging\CreateStackdriverLogger::class,
+            'level' => 'debug',
+        ],
         // 'tenant' => [
         //     'driver' => 'custom',
         //     'via' => \Hyn\Tenancy\Logging\TenantAwareLogger::class,
