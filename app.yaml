@@ -2,4 +2,27 @@ runtime: php
 env: flex
 
 runtime_config:
-    document_root: web
+    document_root: public
+    front_controller_file: index.php
+    # skip_lockdown_document_root: true
+
+env_variables:
+    # Put production environment variables here.
+    APP_LOG: errorlog
+    APP_ENV: staging
+    APP_DEBUG: true
+    APP_KEY: base64:9ymmOm8LPqrXOokuC0QEwa5zrUB3SnDOgXgDeuGiU0s=
+    STORAGE_DIR: /tmp
+    ## Set these environment variables according to your CloudSQL configuration.
+    DB_HOST: 34.65.161.252
+    DB_PORT: 5432
+    DB_CONNECTION: system
+    DB_DATABASE: saas-erp-db
+    DB_USERNAME: saaserp_user
+    DB_PASSWORD: 5d8unGqc021wwpeE
+    # DB_SOCKET: "/cloudsql/YOUR_INSTANCE_NAME"
+
+# Ensure we skip ".env", which is only for local development
+skip_files:
+    - .env
+    - .git
