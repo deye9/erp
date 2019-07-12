@@ -44,9 +44,6 @@
         "post-install-cmd": [
             "composer dump-autoload",
             "php artisan cache:clear"
-        ],
-        "post-update-cmd": [
-            "php artisan optimize"
         ]
     },
     "config": {
