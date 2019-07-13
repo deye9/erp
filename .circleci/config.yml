@@ -34,13 +34,13 @@ jobs:
           command: vendor/bin/phpunit
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:rmiawOMMbHkiEX/8tvER/kdRPFvlKOL1k6MdcqYpc3Y"
+            - "75:44:b7:68:fc:c6:01:62:20:86:5e:f7:7f:a7:93:a2"
       - run:
           name: deploy to GCP
           command: |
-            echo $SSH_PRIVATE_KEY >> ssh_key && chmod 400 ssh_key
+            # echo $SSH_PRIVATE_KEY >> ssh_key && chmod 400 ssh_key
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -o "StrictHostKeyChecking no" -i ssh_key $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && composer install && sudo docker-compose down && sudo docker-compose up'
+              ssh $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && composer install && sudo docker-compose down && sudo docker-compose up'
             fi
       # - run:
       #     name: Deploy to GCP
