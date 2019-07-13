@@ -36,24 +36,12 @@ jobs:
           fingerprints:
             - "75:44:b7:68:fc:c6:01:62:20:86:5e:f7:7f:a7:93:a2"
       - run:
-          name: deploy to GCP
+          name: Deploy to Google Cloud Platform
           command: |
-            # echo $SSH_PRIVATE_KEY >> ssh_key && chmod 400 ssh_key
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -o "StrictHostKeyChecking no" $USER@$IPADDRESS 'cd /home/andelatsm/erp && sudo docker system prune -f && git pull https://github.com/deye9/erp.git && composer install && sudo docker-compose down && sudo docker-compose build --no-cache && sudo docker-compose up'
+              ssh -o "StrictHostKeyChecking no" $USER@$IPADDRESS 'cd /home/andelatsm/erp && sudo docker system prune -f --volumes && sudo docker network prune -f && git pull https://github.com/deye9/erp.git && composer install && sudo docker-compose down && sudo docker-compose build --no-cache && sudo docker-compose up - d'
             fi
-      # - run:
-      #     name: Deploy to GCP
-      #     command: |
-      #       # Add the Cloud SDK distribution URI as a package source
-      #       echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-      #       # Import the Google Cloud Platform public key
-      #       curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-      #       # Update the package list and install the Cloud SDK
-      #       sudo apt-get update && sudo apt-get install google-cloud-sdk
-      # - run:
-      #     name: Make Artisan executable
-      #     command: chmod +x artisan && ls && pwd
+
       # - run:
       #     name: Migrate Laravel Database
       #     command: php artisan migrate:fresh --seed --env=testing

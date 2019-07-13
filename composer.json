@@ -6,8 +6,6 @@
     "type": "project",
     "require": {
         "php": "^7.2",
-        "google/cloud-error-reporting": "^0.14.5",
-        "google/cloud-logging": "^1.16",
         "illuminate/hashing": "^5.8",
         "laravel/lumen-framework": "5.8.*",
         "laravel/tinker": "^1.0",
