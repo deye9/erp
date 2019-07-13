@@ -34,7 +34,7 @@ jobs:
           command: vendor/bin/phpunit
       - add_ssh_keys:
           fingerprints:
-            - "75:44:b7:68:fc:c6:01:62:20:86:5e:f7:7f:a7:93:a2"
+            - "41:df:a1:e9:40:ac:f4:9b:47:0a:ee:a1:98:01:7c:38"
       - run:
           name: Deploy to Google Cloud Platform
           command: |
