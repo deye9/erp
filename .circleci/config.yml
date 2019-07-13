@@ -32,6 +32,9 @@ jobs:
       - run:
           name: Run Tests
           command: vendor/bin/phpunit
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:rmiawOMMbHkiEX/8tvER/kdRPFvlKOL1k6MdcqYpc3Y"
       - run:
           name: deploy to GCP
           command: |
