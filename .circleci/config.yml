@@ -36,8 +36,9 @@ jobs:
           name: deploy to GCP
           command: |
             echo $SSH_PRIVATE_KEY >> ssh_key && chmod 400 ssh_key
+            ssh-keyscan $IPADDRESS >> ~/.ssh/known_hosts
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -o "StrictHostKeyChecking no" -i ssh_key $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && composer install && sudo docker-compose down && sudo docker-compose up'
+              ssh_key $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && composer install && sudo docker-compose down && sudo docker-compose up'
             fi
       # - run:
       #     name: Deploy to GCP
