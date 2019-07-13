@@ -40,7 +40,7 @@ jobs:
           command: |
             # echo $SSH_PRIVATE_KEY >> ssh_key && chmod 400 ssh_key
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -o "StrictHostKeyChecking no" $USER@$IPADDRESS 'cd /home/andelatsm/erp && git pull https://github.com/deye9/erp.git && composer install && sudo docker-compose down && sudo docker-compose build --no-cache && sudo docker-compose up'
+              ssh -o "StrictHostKeyChecking no" $USER@$IPADDRESS 'cd /home/andelatsm/erp && sudo docker system prune -f && git pull https://github.com/deye9/erp.git && composer install && sudo docker-compose down && sudo docker-compose build --no-cache && sudo docker-compose up'
             fi
       # - run:
       #     name: Deploy to GCP
