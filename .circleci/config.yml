@@ -37,7 +37,7 @@ jobs:
           command: |
             echo $SSH_PRIVATE_KEY >> ssh_key
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
-              ssh -i ssh_key $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && sudo docker-compose down && sudo docker-compose up'
+              ssh -o "StrictHostKeyChecking no" -i ssh_key $USER@$IPADDRESS 'git pull https://github.com/deye9/erp.git && cd erp && composer install && sudo docker-compose down && sudo docker-compose up'
             fi
       # - run:
       #     name: Deploy to GCP
