@@ -40,11 +40,11 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php Application/Lumen/artisan key:generate --show"
+            "php application/lumen/artisan key:generate --show"
         ],
         "post-install-cmd": [
             "composer dump-autoload",
-            "php Application/Lumen/artisan cache:clear"
+            "php application/lumen/artisan cache:clear"
         ]
     },
     "config": {

@@ -6,7 +6,7 @@ SAAS based ERP.
 
 * Install dependencies: `composer install`
 * Start containers: `cd erp/docker`, `docker-compose up -d`
-* Run migrations: `php artisan migrate:install`, `php artisan migrate`
+* Run migrations: `php application/lumen/artisan migrate:install`, `php application/lumen/artisan migrate`
 * Command to start up docker with cache `docker-compose down && docker-compose build && docker-compose up -d && docker logs webserver`
 * Command to start up docker without cache `docker-compose down && docker-compose build --no-cache && docker-compose up -d && docker logs webserver`
 
@@ -32,13 +32,13 @@ SAAS based ERP.
 
 ## Swagger cheatsheet
 
-* Generate Swagger documentation `php artisan swagger-lume:publish`
+* Generate Swagger documentation `php application/lumen/artisan swagger-lume:publish`
 
 ## Services exposed outside your environment
 
 Service | Address outside containers
 
-Webserver | [localhost:8080](http://localhost:8080)
+<!-- Webserver | [localhost:8080](http://localhost:8080)
 
 Mailhog web interface | [localhost:8081](http://localhost:8081)
 
@@ -48,4 +48,4 @@ Graylog | localhost:9000
 
 Adminer | localhost:8089/adminer
 
-Swagger | localhost:8080/api/documentation
+Swagger | localhost:8080/api/documentation -->
