@@ -28,7 +28,6 @@ SAAS based ERP.
 * Execute command inside of container: `docker-compose exec SERVICE_NAME COMMAND` where `COMMAND` is whatever you want to run. Examples:
 * Shell into the PHP container: `docker exec -it app /bin/bash`
 * Shell into the Webserver container: `docker exec -it webserver /bin/sh`
-* Open a mysql shell, `docker-compose exec mysql mysql -uroot -pCHOSEN_ROOT_PASSWORD`
 
 ## Swagger cheatsheet
 
