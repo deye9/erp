@@ -60,12 +60,14 @@ class DatabaseCreateCommand extends Command
 
     private function createDB($tenantID)
     {
-        return $this->pdo->exec("CREATE DATABASE \"$tenantID\" WITH OWNER = " . env('DB_USERNAME') . " ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C' TABLESPACE = pg_default CONNECTION LIMIT = -1;");
+        return $this->pdo->exec("CREATE DATABASE \"$tenantID\" WITH OWNER = " . env('DB_USERNAME') .
+        " ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C' TABLESPACE = pg_default CONNECTION LIMIT = -1;");
     }
 
     private function createDbUser($tenantID)
     {
-        return $this->pdo->exec("CREATE USER \"$tenantID\" WITH LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION; GRANT andelatsm TO \"$tenantID\" WITH ADMIN OPTION;");
+        return $this->pdo->exec("CREATE USER \"$tenantID\" WITH LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION;
+        GRANT andelatsm TO \"$tenantID\" WITH ADMIN OPTION;");
     }
 
     /**

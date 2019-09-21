@@ -69,7 +69,7 @@ class Tenant extends Model
 
         $website = static::createTenantDB($tenant->website_id);
 
-        if($website === 0) {
+        if ($website === 0) {
             static::performMigrations($tenant->website_id);
         }
 
@@ -105,7 +105,8 @@ class Tenant extends Model
                 // // Notify Admin
         // $tenant->admin->notify(new TenantCreated($tenant->hostname));
         // $this->info("Admin {$email} can log in using password {$password}");
-        // $user = DB::select("select * from dblink('dbname=$tenant->website_id', 'select email, name from users where id = 1 limit 1') as t1 (email text, name text)");
+        // $user = DB::select("select * from dblink('dbname=$tenant->website_id',
+        // 'select email, name from users where id = 1 limit 1') as t1 (email text, name text)");
     }
 
     private static function createTenantDB(string $tenantID)
