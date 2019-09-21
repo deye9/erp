@@ -6,14 +6,15 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "appzcoder/lumen-routes-list": "^1.0",
         "illuminate/hashing": "^5.8",
         "laravel/lumen-framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "owen-it/laravel-auditing": "^9.2",
+        "sendgrid/sendgrid": "^5.0",
+        "squizlabs/php_codesniffer": "*",
         "tymon/jwt-auth": "dev-develop#f72b8eb as 1.0.0-rc.3.2",
-        "vlucas/phpdotenv": "^3.3",
-        "appzcoder/lumen-routes-list": "^1.0",
-        "sendgrid/sendgrid": "^5.0"
+        "vlucas/phpdotenv": "^3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",
