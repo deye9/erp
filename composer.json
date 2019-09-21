@@ -28,7 +28,10 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "application/lumen/app/"
+            "App\\": "app/",
+            "Domain\\": "domain/",
+            "Interfaces\\": "interfaces/",
+            "Infrastructure\\": "infrastructure/"
         }
     },
     "autoload-dev": {
