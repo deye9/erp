@@ -100,7 +100,7 @@ $app->router->group([
     'namespace' => 'Interfaces\Controllers',
 ], function ($router) {
     require __DIR__ . '/../interfaces/routes/web.php';
-});;
+});
 $app->configure('audit');
 $app->useStoragePath(__DIR__ . '/../infrastructure/storage');
 
