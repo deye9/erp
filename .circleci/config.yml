@@ -31,7 +31,7 @@ jobs:
           command: php composer.phar require --dev phpunit/php-invoker
       - run:
           name: Run CodeSniffer
-          command: php vendor/bin/phpcs --extensions=php --standard=ruleset.xml ./application/
+          command: php vendor/bin/phpcs --extensions=php --standard=ruleset.xml application
       - run:
           name: Run Tests
           command: php vendor/bin/phpunit
