@@ -43,7 +43,7 @@ $app->configure('lighthouse');
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    Application\Lumen\App\Exceptions\Handler::class
 );
 
 $app->singleton(
