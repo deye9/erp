@@ -31,7 +31,7 @@ jobs:
           command: php composer.phar require --dev phpunit/php-invoker
       - run:
           name: Run CodeSniffer
-          command: php vendor/bin/phpcs --extensions=php --standard=ruleset.xml application
+          command: php vendor/bin/phpcs --extensions=php --standard=ruleset.xml .
       - run:
           name: Run Tests
           command: php vendor/bin/phpunit
@@ -44,10 +44,6 @@ jobs:
             if [ "$CIRCLE_BRANCH" == 'master' ]; then
               ssh -o "StrictHostKeyChecking no" $USER@$IPADDRESS 'cd /home/andelatsm/erp && sudo docker system prune -f --volumes && sudo docker network prune -f && git pull https://github.com/deye9/erp.git && composer install && sudo docker-compose down && sudo docker-compose build --no-cache && sudo docker-compose up -d'
             fi
-      # sudo /etc/init.d/apache2 stop
-      # - run:
-      #     name: Migrate Laravel Database
-      #     command: php artisan migrate:fresh --seed --env=testing
 
 workflows:
   version: 2
