@@ -32,9 +32,9 @@ jobs:
       - run:
           name: Run CodeSniffer
           command: php vendor/bin/phpcs --extensions=php --standard=ruleset.xml --ignore=*/vendor,*/tests,*/database .
-      - run:
-          name: Run Tests
-          command: vendor/bin/phpunit ./tests
+      # - run:
+      #     name: Run Tests
+      #     command: vendor/bin/phpunit ./tests
       - add_ssh_keys:
           fingerprints:
             - "41:df:a1:e9:40:ac:f4:9b:47:0a:ee:a1:98:01:7c:38"
